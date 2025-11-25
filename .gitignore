@@ -1,0 +1,23 @@
+# Python
+*.pyc
+__pycache__/
+.venv/
+
+# Node
+node_modules/
+npm-debug.log
+dist/
+.env
+.env.local
+
+# Vite
+*.log
+
+# OS
+.DS_Store
+
+# Mongo
+*.lock
+
+# Build artifacts
+*.sqlite

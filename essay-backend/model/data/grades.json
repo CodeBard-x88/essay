@@ -1,0 +1,55 @@
+[
+  {
+    "record_id": "7b7dcc1805264dcebb1c83e576b5f50f",
+    "saved_at": "2025-11-17T10:09:47.519801Z",
+    "student_name": "QA Tester",
+    "assignment_id": "TST-002",
+    "grade": 88.0,
+    "feedback": "Strong analysis with minor citation gaps.",
+    "evaluation": {
+      "score": 87.5,
+      "normalized_score": 87.5,
+      "strengths": [
+        "Clear thesis",
+        "Good evidence"
+      ],
+      "improvements": [
+        "Add citations"
+      ],
+      "feedback": "Nice work",
+      "metadata": {
+        "word_count": 250
+      }
+    }
+  },
+  {
+    "record_id": "dbd1918160b1465faf762b95c8db4adb",
+    "saved_at": "2025-11-17T10:28:25.351781Z",
+    "student_name": "Hafiz Zeeshan Shafi",
+    "assignment_id": "123",
+    "grade": 4.0,
+    "feedback": "The essay demonstrates developing mastery with approximately 99 words spread across 5 sentences. Maintain the current strengths while addressing the suggested improvements to lift the score further.",
+    "evaluation": {
+      "score": 3.89,
+      "normalized_score": 3.89,
+      "strengths": [
+        "Ideas are developed with multi-clause sentences.",
+        "Writer uses a varied vocabulary."
+      ],
+      "improvements": [
+        "Add more supporting details to reach the expected length.",
+        "Organize thoughts into more complete paragraphs."
+      ],
+      "feedback": "The essay demonstrates developing mastery with approximately 99 words spread across 5 sentences. Maintain the current strengths while addressing the suggested improvements to lift the score further.",
+      "metadata": {
+        "student_name": "Hafiz Zeeshan Shafi",
+        "assignment_id": "123",
+        "word_count": 99,
+        "sentence_count": 5,
+        "avg_sentence_length": 19.8,
+        "lexical_diversity": 0.8484848484848485,
+        "char_count": 717
+      }
+    }
+  }
+]
