@@ -1,0 +1,33 @@
+experiment_name: "baseline_lstm"
+
+data:
+  raw_path: "model/data/training_data.csv"
+  processed_dir: "model/training/data"
+  train_path: "model/training/data/train.csv"
+  val_path: "model/training/data/val.csv"
+  text_column: "essay"
+  label_column: "score"
+  val_size: 0.2
+  shuffle: true
+
+model:
+  embedding_dim: 128
+  hidden_dim: 256
+  num_layers: 2
+  dropout: 0.3
+  padding_idx: 0
+  max_vocab_size: 20000
+
+training:
+  batch_size: 32
+  lr: 0.001
+  epochs: 5
+  weight_decay: 0.0005
+  device: "cpu"
+  seed: 42
+
+artifacts:
+  dir: "model/training/artifacts"
+  model_filename: "essay_regressor.pt"
+  tokenizer_filename: "tokenizer.json"
+  metrics_filename: "metrics.json"
