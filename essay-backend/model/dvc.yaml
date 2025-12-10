@@ -1,0 +1,33 @@
+stages:
+  data_prep:
+    cmd: python training/scripts/data_prep.py
+    deps:
+      - training/scripts/data_prep.py
+      - training/config/base.yaml
+      - training/data/raw/raw_essays.csv
+    outs:
+      - training/data/train.csv
+      - training/data/val.csv
+
+  train:
+    cmd: python training/scripts/train.py
+    deps:
+      - training/scripts/train.py
+      - training/config/base.yaml
+      - training/data/train.csv
+      - training/data/val.csv
+    outs:
+      - training/artifacts/model.pt
+      - training/artifacts/tokenizer.json
+      - training/artifacts/metrics.json
+
+  evaluate:
+    cmd: python training/scripts/evaluate.py
+    deps:
+      - training/scripts/evaluate.py
+      - training/config/base.yaml
+      - training/artifacts/model.pt
+      - training/artifacts/tokenizer.json
+    outs:
+      - training/artifacts/eval_metrics.json
+      - training/artifacts/evaluation_report.txt
