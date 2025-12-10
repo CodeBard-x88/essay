@@ -44,6 +44,21 @@
 - Ensure MongoDB is reachable from the machine (Atlas IP allowlist or local Mongo service).
 - For Windows, if `py` is unavailable, use `python` instead in the model commands.
 
+## Running with Docker Compose (full stack)
+- Prerequisite: Docker and docker-compose installed.
+- From the project root (`essay/`), build images: `docker-compose build`.
+- Start services: `docker-compose up` (add `-d` to run detached).
+- Environment variables:
+  - Backend: `MONGO_URI`, `JWT_SECRET`, optional `PORT` (defaults to 5050 in compose).
+  - Model API: configured in compose; no secrets required by default.
+  - Frontend: `VITE_API_BASE_URL` and `VITE_MODEL_API_BASE_URL` are set in compose to reach backend/model via service names.
+- Access:
+   - Frontend: http://localhost:5173 (served by nginx build image).
+   - Backend API: http://localhost:5050
+   - Model API: http://localhost:8000
+  - Ensure `essay-backend/.env` exists (copy from `.env.example` if available) so docker-compose can supply backend secrets.
+  - Stop everything: `docker-compose down` (add `-v` to clear volumes, e.g., Mongo data, if desired).
+
 ## Common Issues
 - **Token errors**: clear `localStorage` key `essay_auth_token` or click Logout, then log back in. Ensure backend `JWT_SECRET` hasn’t changed without logging out.
 - **Mongo connection failure**: verify `MONGO_URI`, network firewall, or start local Mongo service.

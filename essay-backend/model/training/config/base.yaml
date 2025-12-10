@@ -1,0 +1,43 @@
+experiment_name: baseline_lstm
+
+data:
+  raw_path: training/data/raw/raw_essays.csv  # TODO: Update to the path of your raw CSV dataset
+  processed_train_path: training/data/train.csv
+  processed_val_path: training/data/val.csv
+  text_column: essay
+  label_column: score
+  validation_size: 0.2
+  shuffle: true
+
+model:
+  type: lstm
+  embedding_dim: 128
+  hidden_dim: 256
+  num_layers: 2
+  dropout: 0.3
+  max_vocab_size: 20000
+  max_seq_len: 400
+
+training:
+  batch_size: 32
+  lr: 0.001
+  epochs: 5
+  weight_decay: 0.0001
+  device: cpu
+  seed: 42
+  grad_clip: 1.0
+
+artifacts:
+  output_dir: training/artifacts
+  model_filename: model.pt
+  tokenizer_filename: tokenizer.json
+  metrics_filename: metrics.json
+  evaluation_metrics_filename: eval_metrics.json
+  evaluation_report_filename: evaluation_report.txt
+
+# MLflow tracking configuration
+mlflow:
+  tracking_uri: "file:mlruns"           # Use local file store by default; replace with your server URI if needed
+  experiment_name: "essay-grader"
+  run_name: "baseline"
+  log_artifacts: true

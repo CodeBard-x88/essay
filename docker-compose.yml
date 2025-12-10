@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  model:
+    build:
+      context: ./essay-backend/model
+    ports:
+      - "8000:8000"
+
+  backend:
+    build:
+      context: ./essay-backend
+    ports:
+      - "5050:5050"
+    env_file:
+      - ./essay-backend/.env
+    environment:
+      MONGO_URI: ${MONGO_URI:-mongodb://mongo:27017/essay}
+      PORT: 5050
+      JWT_SECRET: ${JWT_SECRET:-some_dev_secret}
+      MODEL_API_BASE_URL: http://model:8000
+    depends_on:
+      - model
+      - mongo
+
+  frontend:
+    build:
+      context: ./essay
+      args:
+        VITE_API_BASE_URL: http://backend:5050
+        VITE_MODEL_API_BASE_URL: http://model:8000
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
